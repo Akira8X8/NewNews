@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private ListAdapter mAdapter;
 
-    private String searchParams;
+    private String searchParams = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +62,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
                 Uri articleUri = Uri.parse(currentHeadline.getUrl());
 
-                Intent bookSiteIntent = new Intent(Intent.ACTION_VIEW,articleUri);
+                Intent newsIntent = new Intent(Intent.ACTION_VIEW,articleUri);
 
-                startActivity(bookSiteIntent);
+                startActivity(newsIntent);
 
             }
         });
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public Loader<List<Headline>> onCreateLoader(int i, Bundle bundle) {
 
-        return new NewsLoader(this, searchParams);
+        return new NewsLoader(this, NEWS_REQUEST_URL);
     }
 
     @Override

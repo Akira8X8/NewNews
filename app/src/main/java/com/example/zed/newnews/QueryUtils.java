@@ -136,15 +136,12 @@ public class QueryUtils {
                 // Get a single headline at position i within the list of headlines
                 JSONObject currentNews = results.getJSONObject(i);
 
-
                 // Extract the value for the key called "title"
                 String title = currentNews.getString("webTitle");
 
                 String section = currentNews.getString("sectionName");
 
                 String murl = currentNews.getString("webUrl");
-
-
 
                 Headline headline = new Headline(title, section, murl);
 

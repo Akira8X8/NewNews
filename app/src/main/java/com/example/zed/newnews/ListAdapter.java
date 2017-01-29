@@ -21,14 +21,12 @@ public class ListAdapter extends ArrayAdapter<Headline>{
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
 
-        View listView = convertView;
-
-
-        if (listView == null){
-            listView = LayoutInflater.from(getContext()).inflate(R.layout.news_entry, parent, false);
-        }
-
         Headline headline = getItem(position);
+
+
+        if (convertView == null){
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.news_entry, parent, false);
+        }
 
         TextView sectionView = (TextView) convertView.findViewById(R.id.section);
         sectionView.setText(headline.getSection());
@@ -36,7 +34,7 @@ public class ListAdapter extends ArrayAdapter<Headline>{
         TextView titleTextView = (TextView) convertView.findViewById(R.id.title);
         titleTextView.setText(headline.getTitle());
 
-        return listView;
+        return convertView;
 
     }
 
